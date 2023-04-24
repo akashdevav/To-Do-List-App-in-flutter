@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:todo_app/background.dart';
+import 'package:todo_app/dialog_box.dart';
 
 class homePage extends StatefulWidget {
   homePage({super.key});
@@ -10,6 +11,7 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+  final PageController pageController = PageController(initialPage: 0);
   int _selectedIndex = 0;
 
   @override
@@ -27,16 +29,29 @@ class _homePageState extends State<homePage> {
               icon: Icon(CupertinoIcons.calendar_circle_fill))
         ],
       ),
-      body: colorGradient(
-          Color.fromARGB(255, 214, 85, 236), Color.fromARGB(255, 87, 5, 101)),
+      extendBody: true,
+      body: PageView(
+        controller: pageController,
+        children: [
+          Center(
+            child: Discreption(),
+          ),
+          Center(
+            child: taskTag(),
+          )
+        ],
+      ),  
+      // body: colorGradient(Color.fromARGB(255, 214, 85, 236), Color.fromARGB(255, 87, 5, 101)),
       
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked, //add icon part
       floatingActionButton:
-          FloatingActionButton(onPressed: null, child: Icon(Icons.add)),
+          FloatingActionButton(onPressed: () {
+            setState(() {
+              addTaskdialog();
+            });
+          }, child: Icon(Icons.add)),
       bottomNavigationBar: BottomAppBar(
-        //bottom appbar part
-        //color: Colors.deepPurple,
         shape: CircularNotchedRectangle(),
         notchMargin: 3.0,
         clipBehavior: Clip.antiAlias,
@@ -51,6 +66,7 @@ class _homePageState extends State<homePage> {
               onTap: (index) {
                 setState(() {
                   _selectedIndex = index;
+                  pageController.jumpToPage(index);
                 });
               },
               items: [
@@ -59,5 +75,24 @@ class _homePageState extends State<homePage> {
             )) ),
       ),
     );
+  }
+}
+
+
+class Discreption extends StatelessWidget {
+  Discreption({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('content of your description');
+  }
+}
+
+class taskTag extends StatelessWidget {
+  taskTag({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('your task');
   }
 }

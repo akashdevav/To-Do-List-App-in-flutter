@@ -14,6 +14,12 @@ class _homePageState extends State<homePage> {
   final PageController pageController = PageController(initialPage: 0);
   int _selectedIndex = 0;
 
+  // void addDialog(){
+  //   setState(() {
+  //     addTaskdialog();
+  //   });
+  // }
+
   @override
   Widget build(BuildContext) {
     return Scaffold(
@@ -47,10 +53,10 @@ class _homePageState extends State<homePage> {
           FloatingActionButtonLocation.centerDocked, //add icon part
       floatingActionButton:
           FloatingActionButton(onPressed: () {
-            setState(() {
-              addTaskdialog();
-            });
-          }, child: Icon(Icons.add)),
+           addTaskdialog();
+          },
+          tooltip: 'Add task',
+           child: Icon(Icons.add)),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 3.0,
@@ -72,7 +78,9 @@ class _homePageState extends State<homePage> {
               items: [
                 BottomNavigationBarItem(icon: Icon(CupertinoIcons.square_list),label: ''),
               BottomNavigationBarItem(icon: Icon(CupertinoIcons.tag), label: ''),],
-            )) ),
+            ),
+            ),
+             ),
       ),
     );
   }

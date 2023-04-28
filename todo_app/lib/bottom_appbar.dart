@@ -53,7 +53,7 @@ class _homePageState extends State<homePage> {
           FloatingActionButtonLocation.centerDocked, //add icon part
       floatingActionButton:
           FloatingActionButton(onPressed: () {
-           addTaskdialog();
+           showDialog(context: context, builder: ((context) => addTaskdialog()));
           },
           tooltip: 'Add task',
            child: Icon(Icons.add)),

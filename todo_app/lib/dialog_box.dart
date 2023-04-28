@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/bottom_appbar.dart';
 
 class addTaskdialog extends StatefulWidget {
   addTaskdialog({super.key});
@@ -16,7 +17,7 @@ class _addTaskdialogState extends State<addTaskdialog> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var hight = MediaQuery.of(context).size.height;
-    return  AlertDialog(
+    return AlertDialog(
       scrollable: true,
       title: Text(
         'New Task',
@@ -26,20 +27,46 @@ class _addTaskdialogState extends State<addTaskdialog> {
       content: SizedBox(
         height: hight * 0.35,
         width: width,
-        child: Form(
-          child: Column(
-            children: [
-              TextFormField(style: TextStyle(fontSize: 14.0),
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(
+        child: SingleChildScrollView(
+          child: Form(
+            child: Column(
+              children: [
+                TextFormField(style: TextStyle(fontSize: 14.0),
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                    vertical: 20.0
+                  ),
+                  hintText: 'Task Name',
+                  hintStyle: TextStyle(fontSize: 14.0),
+                  icon: Icon(CupertinoIcons.square_list, color: Colors.deepPurple,),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0))
+                ),
+                ),
+                SizedBox(height: 15.0),
+                TextFormField(keyboardType: TextInputType.multiline,
+                maxLines: null,
+                style: TextStyle(fontSize: 14.0),
+                decoration: InputDecoration(contentPadding: EdgeInsets.symmetric(
                   horizontal: 20.0,
                   vertical: 20.0
                 ),
-                hintText: 'Task',
+                hintText: 'Description',
                 hintStyle: TextStyle(fontSize: 14.0),
-                icon: Icon(CupertinoIcons.square_list, color: Colors.deepPurple,)
-              ),)
-            ],
+                icon: Icon(CupertinoIcons.bubble_left_bubble_right, color: Colors.deepPurple,),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0))
+                ),
+                ),
+                SizedBox(height: 15.0,),
+                Row(
+                  children: [
+                    Icon(CupertinoIcons.tag, color: Colors.deepPurple),
+                    SizedBox(width: 15.0),
+                    taskTag()
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

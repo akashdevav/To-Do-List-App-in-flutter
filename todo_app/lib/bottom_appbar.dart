@@ -92,7 +92,7 @@ class Discreption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('content of your description');
+    return Text('Task Name');
   }
 }
 
@@ -101,6 +101,6 @@ class taskTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('your task');
+    return Text('Task Tag');
   }
 }

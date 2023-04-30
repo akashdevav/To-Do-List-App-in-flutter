@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/bottom_appbar.dart';
+//import 'package:todo_app/bottom_appbar.dart';
+//import 'package:todo_app/dropdown.dart';
 
 class addTaskdialog extends StatefulWidget {
   addTaskdialog({super.key});
@@ -12,6 +14,7 @@ class addTaskdialog extends StatefulWidget {
 }
 
 class _addTaskdialogState extends State<addTaskdialog> {
+  String _chosenValue = "Work";
 
   @override
   Widget build(BuildContext context) {
@@ -57,19 +60,35 @@ class _addTaskdialogState extends State<addTaskdialog> {
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0))
                 ),
                 ),
-                SizedBox(height: 15.0,),
-                Row(
-                  children: [
-                    Icon(CupertinoIcons.tag, color: Colors.deepPurple),
-                    SizedBox(width: 15.0),
-                    taskTag()
-                  ],
-                )
+                // SizedBox(height: 15.0,),
+                // Row(
+                //   children: [
+                //     Icon(CupertinoIcons.tag, color: Colors.deepPurple),
+                //     SizedBox(width: 15.0),
+                //       taskTag()
+                //   ],
+                // )
               ],
             ),
           ),
         ),
       ),
+      actions: [
+        //cancel
+        ElevatedButton(onPressed: () {
+          Navigator.pop(context, true);
+        },
+        style: ElevatedButton.styleFrom(
+          primary: Colors.deepPurple
+        ),
+         child: Text('Cancel')),
+         //save
+         ElevatedButton(onPressed: () {},
+         style: ElevatedButton.styleFrom(
+          primary: Colors.deepPurple
+         ),
+          child: Text('Save'))
+      ],
     );
   }
 }

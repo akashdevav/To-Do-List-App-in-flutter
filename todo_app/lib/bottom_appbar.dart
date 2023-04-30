@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:todo_app/background.dart';
 import 'package:todo_app/dialog_box.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+
 
 class homePage extends StatefulWidget {
   homePage({super.key});
@@ -92,7 +94,9 @@ class Discreption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Task Name');
+    return Center(
+      child: LoadingAnimationWidget.stretchedDots(color: Colors.deepPurple, size: 40.0)
+    );
   }
 }
 
@@ -101,6 +105,6 @@ class taskTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Task Tag');
+    return Text('The page is not get ready!');
   }
 }

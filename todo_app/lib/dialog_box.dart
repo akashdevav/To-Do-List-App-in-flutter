@@ -1,7 +1,7 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:todo_app/bottom_appbar.dart';
 //import 'package:todo_app/dropdown.dart';
 
@@ -137,11 +137,11 @@ class _addTaskdialogState extends State<addTaskdialog> {
 
          //save
          ElevatedButton(onPressed: () {
-          final taskName = taskNameController.text;
-          final taskDesc = taskDescController.text;
-          //_addTasks(taskName: taskName, taskDesc: taskDesc);
-          //The above mapped value can send to the db with unique id
-          //dbRef.push().set(task);
+          // final taskName = taskNameController.text;
+          // final taskDesc = taskDescController.text;
+          // FirebaseFirestore.instance.collection('tasks').snapshots().listen((data) {
+          //   print(data);
+          // });
          },
          style: ElevatedButton.styleFrom(
           primary: Colors.deepPurple

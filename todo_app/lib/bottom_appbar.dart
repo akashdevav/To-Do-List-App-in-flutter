@@ -4,6 +4,7 @@ import 'package:todo_app/background.dart';
 import 'package:todo_app/dialog_box.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:todo_app/task_desc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class homePage extends StatefulWidget {
@@ -56,7 +57,10 @@ class _homePageState extends State<homePage> {
           FloatingActionButtonLocation.centerDocked, //add icon part
       floatingActionButton:
           FloatingActionButton(onPressed: () {
-           showDialog(context: context, builder: ((context) => addTaskdialog()));
+            FirebaseFirestore.instance.collection('tasks').snapshots().listen((data) {
+            print(data);
+          });
+           //showDialog(context: context, builder: ((context) => addTaskdialog()));
           },
           tooltip: 'Add task',
            child: Icon(Icons.add)),

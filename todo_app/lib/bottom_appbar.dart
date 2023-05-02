@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:todo_app/background.dart';
 import 'package:todo_app/dialog_box.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:todo_app/task_desc.dart';
 
 
 class homePage extends StatefulWidget {
@@ -42,7 +43,7 @@ class _homePageState extends State<homePage> {
         controller: pageController,
         children: [
           Center(
-            child: Discreption(),
+            child: taskDescription(),
           ),
           Center(
             child: taskTag(),
@@ -89,22 +90,14 @@ class _homePageState extends State<homePage> {
 }
 
 
-class Discreption extends StatelessWidget {
-  Discreption({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: LoadingAnimationWidget.stretchedDots(color: Colors.deepPurple, size: 40.0)
-    );
-  }
-}
 
 class taskTag extends StatelessWidget {
   taskTag({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Text('The page is not get ready!');
+    return Center(
+      child: LoadingAnimationWidget.stretchedDots(color: Colors.deepPurple, size: 40.0)
+    );
   }
 }

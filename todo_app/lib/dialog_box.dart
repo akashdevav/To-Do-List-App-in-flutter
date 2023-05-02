@@ -18,6 +18,7 @@ class _addTaskdialogState extends State<addTaskdialog> {
   final TextEditingController taskNameController = TextEditingController();
   final TextEditingController taskDescController = TextEditingController();
   final List<String> taskTags = ['work', 'collage', 'school', 'other'];
+  late String selectedvalue = '';
 
   //late DatabaseReference dbRef;  //initialising database
 
@@ -110,8 +111,10 @@ class _addTaskdialogState extends State<addTaskdialog> {
                           child: Text(item, 
                           style: TextStyle(fontSize: 14)),
                         )).toList(),
-                         onChanged: (value) {
-                           
+                         onChanged: (String? value) {
+                           setState(() {
+                             if(value != null) selectedvalue = value;
+                           });
                          },
                         )
                       )

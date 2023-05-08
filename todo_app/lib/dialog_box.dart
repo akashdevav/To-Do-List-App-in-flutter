@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:todo_app/bottom_appbar.dart';
-//import 'package:todo_app/dropdown.dart';
 
 class addTaskdialog extends StatefulWidget {
   addTaskdialog({super.key});
@@ -15,19 +14,13 @@ class addTaskdialog extends StatefulWidget {
 }
 
 class _addTaskdialogState extends State<addTaskdialog> {
+  //SFirebaseFirestore firebase = FirebaseFirestore.instance;
+  
   final TextEditingController taskNameController = TextEditingController();
   final TextEditingController taskDescController = TextEditingController();
   final List<String> taskTags = ['work', 'collage', 'school', 'other'];
   late String selectedvalue = '';
 
-  //late DatabaseReference dbRef;  //initialising database
-
-  //creating a instance Database Name
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   dbRef = FirebaseDatabase.instance.ref().child('Daily Task');
-  // } 
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +58,8 @@ class _addTaskdialogState extends State<addTaskdialog> {
                 SizedBox(height: 15.0),
 
                 //2nd input text field (Discreption)
-                TextFormField(controller: taskDescController,
+                TextFormField(
+                  controller: taskDescController,
                  keyboardType: TextInputType.multiline,
                 maxLines: null,
                 style: TextStyle(fontSize: 14.0),
@@ -140,7 +134,7 @@ class _addTaskdialogState extends State<addTaskdialog> {
           // final taskName = taskNameController.text;
           // final taskDesc = taskDescController.text;
           // FirebaseFirestore.instance.collection('tasks').snapshots().listen((data) {
-          //   print(data);
+          //   print('data');
           // });
          },
          style: ElevatedButton.styleFrom(

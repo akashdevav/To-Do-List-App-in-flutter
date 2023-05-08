@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:todo_app/background.dart';
@@ -11,12 +12,15 @@ class homePage extends StatefulWidget {
   homePage({super.key});
 
   @override
-  State<homePage> createState() => _homePageState();
+  State<homePage> createState() {
+    return _homePageState();
+  }
 }
 
 class _homePageState extends State<homePage> {
   final PageController pageController = PageController(initialPage: 0);
   int _selectedIndex = 0;
+  
 
   // void addDialog(){
   //   setState(() {
@@ -57,10 +61,10 @@ class _homePageState extends State<homePage> {
           FloatingActionButtonLocation.centerDocked, //add icon part
       floatingActionButton:
           FloatingActionButton(onPressed: () {
-            FirebaseFirestore.instance.collection('tasks').snapshots().listen((data) {
-            print(data);
-          });
-           //showDialog(context: context, builder: ((context) => addTaskdialog()));
+          //   FirebaseFirestore.instance.collection('tasks/l5xFYcCp8RsxOdzN6jxb').snapshots().listen((event) {
+          //   print('event');
+          // });
+           showDialog(context: context, builder: ((context) => addTaskdialog()));
           },
           tooltip: 'Add task',
            child: Icon(Icons.add)),
@@ -92,7 +96,6 @@ class _homePageState extends State<homePage> {
     );
   }
 }
-
 
 
 class taskTag extends StatelessWidget {

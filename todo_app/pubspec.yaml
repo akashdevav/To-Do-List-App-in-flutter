@@ -38,8 +38,8 @@ dependencies:
   loading_animation_widget:
   loading_indicator: ^3.1.0
   firebase_database: ^10.1.1
-  firebase_core: ^2.10.0
-  cloud_firestore: ^4.5.3
+  firebase_core: ^2.11.0
+  cloud_firestore: ^4.6.0
   dropdown_button2: ^2.1.0
 
 dev_dependencies:

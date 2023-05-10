@@ -48,7 +48,7 @@ class _homePageState extends State<homePage> {
         controller: pageController,
         children: [
           Center(
-            child: taskDescription(),
+            child: TaskDescription(),
           ),
           Center(
             child: taskTag(),
@@ -99,7 +99,7 @@ class _homePageState extends State<homePage> {
 
 
 class taskTag extends StatelessWidget {
-  taskTag({super.key});
+  const taskTag({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:todo_app/bottom_appbar.dart';
+import 'package:todo_app/new_task.dart';
 
 class addTaskdialog extends StatefulWidget {
   addTaskdialog({super.key});
@@ -14,12 +16,12 @@ class addTaskdialog extends StatefulWidget {
 }
 
 class _addTaskdialogState extends State<addTaskdialog> {
-  //SFirebaseFirestore firebase = FirebaseFirestore.instance;
-  
+ 
   final TextEditingController taskNameController = TextEditingController();
   final TextEditingController taskDescController = TextEditingController();
   final List<String> taskTags = ['work', 'collage', 'school', 'other'];
   late String selectedvalue = '';
+  
 
 
   @override
@@ -131,11 +133,11 @@ class _addTaskdialogState extends State<addTaskdialog> {
 
          //save
          ElevatedButton(onPressed: () {
-          // final taskName = taskNameController.text;
-          // final taskDesc = taskDescController.text;
-          // FirebaseFirestore.instance.collection('tasks').snapshots().listen((data) {
-          //   print('data');
-          // });
+          String taskName = taskNameController.text;
+          String taskDesc = taskDescController.text;
+          final taskTag = selectedvalue;
+          
+          Navigator.of(context, rootNavigator: true).pop();
          },
          style: ElevatedButton.styleFrom(
           primary: Colors.deepPurple
@@ -145,3 +147,6 @@ class _addTaskdialogState extends State<addTaskdialog> {
     );
   }
 }
+
+
+

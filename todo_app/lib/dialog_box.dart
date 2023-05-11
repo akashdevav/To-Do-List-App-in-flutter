@@ -136,7 +136,7 @@ class _addTaskdialogState extends State<addTaskdialog> {
           String taskName = taskNameController.text;
           String taskDesc = taskDescController.text;
           final taskTag = selectedvalue;
-          
+          _addtask(taskName: taskName, taskDesc: taskDesc, taskTag: taskTag);
           Navigator.of(context, rootNavigator: true).pop();
          },
          style: ElevatedButton.styleFrom(
@@ -146,7 +146,24 @@ class _addTaskdialogState extends State<addTaskdialog> {
       ],
     );
   }
+
+
+Future _addtask({required String taskName, required String taskDesc, required String taskTag}) async {
+  DocumentReference docRef = await FirebaseFirestore.instance.collection('tasks').add({
+    'taskName' : taskName,
+    'taskDesc' : taskDesc,
+    'taskTag' : taskTag
+  });
+  String taskId = docRef.id;
+  await FirebaseFirestore.instance.collection('tasks').doc(taskId).update({
+    'id' : taskId
+  });
+  _clearall();
 }
 
-
+void _clearall() {
+  taskNameController.text = '';
+  taskDescController.text = '';
+}
+}
 
